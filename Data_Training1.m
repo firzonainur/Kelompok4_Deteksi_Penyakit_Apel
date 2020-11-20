@@ -41,5 +41,6 @@ for n = 1:total_images %melakukan looping sebanyak 10 image
 end
 
 xlswrite('Training_data',Output,'Sheet1','B2');
+save Training_data.m Output
 
 
