@@ -42,5 +42,3 @@ end
 
 xlswrite('Training_data',Output,'Sheet1','B2');
 save Training_data.m Output%menyimpann
-
-
