@@ -1,9 +1,9 @@
 clc;clear;close all;
-image_folder = 'Dataset Images'; %lokasi folder dari file image
+image_folder = 'gambar'; %lokasi folder dari file image
 filenames = dir(fullfile(image_folder, '*.jpg')); %menyimpan image sebagai list sehingga dapat dipanggil berulang kali
-total_images=35; %banyaknya gambar yang digunakan yaitu 10, dan juga sebagai variable batas perulangan
+total_images=105; %banyaknya gambar yang digunakan yaitu 10, dan juga sebagai variable batas perulangan
 for n = 1:total_images %melakukan looping sebanyak 10 image
-    full_name = fullfile(image_folder, strcat('Apple (',num2str(n),').jpg')) ; %memanggil file image dengan mengubah angka menjadi berbentuk string
+    full_name = fullfile(image_folder, strcat('apel',num2str(n),'.jpg')) ; %memanggil file image dengan mengubah angka menjadi berbentuk string
     Img = imread(full_name); %membaca file image
     I = rgb2gray(Img);
     GLCM = graycomatrix(I,'Offset',[0 1; -1 1; -1 0; -1 -1]); %fitur tekstur GLCM
@@ -36,9 +36,17 @@ for n = 1:total_images %melakukan looping sebanyak 10 image
     X =[CON;CORR]';
     number = [urutan;CON;CORR;EN;HOM;Mean;Standard_Deviation;Entropy;RMS;Variance;Smoothness;Kurtosis;Skewness;IDM]';
     Header = {'Gambar ke-', 'Contrast', 'Corelation', 'energy', 'homogenity', 'Mean', 'Standar Deviasi', 'enthropy', 'RMS', 'Variance', 'Smoothness', 'Kurtosis','Skewness', 'IDM'}
+    anyar = [CON;CORR;EN;HOM;Mean;Standard_Deviation;Entropy;RMS;Variance;Smoothness;Kurtosis;Skewness;IDM]';
     DataCell = num2cell(number);
     Output = [Header;DataCell]; %memasukkan ke data x
 end
+baru = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,...
+        2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,...
+        3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,...
+        4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
+xlswrite('Training_data',Output,'Sheet1','B3');
+save Training_data.mat anyar baru;
+load('Training_data.mat')
 
-xlswrite('Training_data',Output,'Sheet1','B2');
-save Training_data.m Output%menyimpann
+
+
