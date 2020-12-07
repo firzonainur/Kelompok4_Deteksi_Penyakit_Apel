@@ -1,0 +1,4 @@
+1. Apple rot klaster 3
+2. Apple blotch klaster 1
+3. Apple scab klaster 3
+4. Apple normal
